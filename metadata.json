@@ -1,0 +1,6 @@
+{
+  "name": "JubaGo",
+  "description": "All-in-one services discovery, bookings, food ordering, and real-time delivery tracking platform for Juba, South Sudan.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

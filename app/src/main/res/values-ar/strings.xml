@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- App & General -->
+    <string name="app_name">جوبا قو</string>
+    <string name="default_web_client_id">1083478921-jubago-client.apps.googleusercontent.com</string>
+    <string name="app_country_badge">جنوب السودان</string>
+    <string name="app_title">جوبا قو</string>
+    <string name="app_tagline">منصة جنوب السودان الأولى للتجارة والحجوزات والتوصيل</string>
+
+    <!-- Navigation Bar -->
+    <string name="nav_explore">استكشف</string>
+    <string name="nav_tracking">تتبع حي</string>
+    <string name="nav_support">مساعدة</string>
+    <string name="nav_orders">طلباتي</string>
+    <string name="nav_merchant">التاجر</string>
+
+    <!-- Explore Screen & Header -->
+    <string name="hero_title">جوبا قو - جنوب السودان</string>
+    <string name="hero_subtitle">عربات • طيارات • فنادق • أكل وتوصيل سريع</string>
+    <string name="hero_tagline">منصة كل أصحاب المحلات في جوبا • دفع موبايل قروش وتتبع GPS</string>
+    <string name="hero_tutorial_button">جديد هنا؟ شوف دليل البرنامج بدقيقة</string>
+    <string name="search_placeholder">فتّش كسرة، سمك نيلي، فنادق، بودا، طيارات...</string>
+    <string name="search_label">بحث</string>
+    <string name="verified_only">مضمون ومرخص بس</string>
+    <string name="offline_cache_active">خريطة النيل شغالة بدون نت</string>
+    <string name="offline_notice">البيانات محفوظة محلياً. طلباتك حتترسل أوتوماتيك أول ما النت يرجع.</string>
+
+    <!-- Service Categories -->
+    <string name="category_all">الكل</string>
+    <string name="category_food">أكل ومطاعم</string>
+    <string name="category_hotels">فنادق وبيوت</string>
+    <string name="category_cars">عربات وبودا</string>
+    <string name="category_flights">طيارات وشحن</string>
+    <string name="category_grocery">دكاكين وأغراض</string>
+
+    <!-- Geographic Coverage Scopes -->
+    <string name="scope_all">كل المناطق</string>
+    <string name="scope_juba_local">مدينة جوبا وضواحيها</string>
+    <string name="scope_national">كل ولايات الجنوب</string>
+    <string name="scope_regional">دول شرق أفريقيا</string>
+    <string name="scope_global">دولياً وخارج أفريقيا</string>
+
+    <!-- Actions & Common Buttons -->
+    <string name="book_now">إحجز هسة</string>
+    <string name="quick_book">طلب سريع</string>
+    <string name="view_details">شوف التفاصيل</string>
+    <string name="quick_book_cars">إحجز مشوار</string>
+    <string name="quick_book_flights">إحجز مقعد</string>
+    <string name="quick_book_hotels">إحجز غرفة</string>
+    <string name="quick_book_food">أطلب أكل</string>
+    <string name="quick_book_default">أطلب هسة</string>
+    <string name="cancel_button">إلغاء</string>
+    <string name="confirm_button">تأكيد</string>
+    <string name="close_button">إغلاق</string>
+    <string name="save_button">حفظ</string>
+
+    <!-- User Roles -->
+    <string name="role_customer">وضع الزبون</string>
+    <string name="role_merchant">وضع صاحب العمل والتاجر</string>
+    <string name="role_courier">وضع السائق والمندوب</string>
+    <string name="select_language">إختر اللغة</string>
+    <string name="language_toggle_label">اللغة / Language</string>
+
+    <!-- Merchant Onboarding Banner -->
+    <string name="register_business_banner_title">سجّل شركتك أو مطعمك في جوبا قو</string>
+    <string name="register_business_banner_desc">دكاكين، شقق، فنادق، تأجير سيارات ومطاعم: قدّم خدماتك في كل ولايات جنوب السودان وخارجها.</string>
+    <string name="register_button">تسجيل</string>
+
+    <!-- Payment Methods -->
+    <string name="payment_mgurush_title">إم-قروش (m-GURUSH)</string>
+    <string name="payment_mgurush_desc">محفظة جنوب السودان الإلكترونية الرائدة</string>
+    <string name="payment_momo_title">إم تي إن مومو (MTN MoMo)</string>
+    <string name="payment_momo_desc">تحويل فوري عبر رصيد إم تي إن</string>
+    <string name="payment_digitel_title">ديجيتل باي (Digitel Pay)</string>
+    <string name="payment_digitel_desc">محفظة شبكة ديجيتل للاتصالات</string>
+    <string name="payment_cash_title">كاش يد بيد (Cash on Delivery)</string>
+    <string name="payment_cash_desc">إدفع كاش بالجنوب سوداني للمندوب عند الاستلام</string>
+    <string name="payment_card_title">بطاقة بنكية (Visa / MC)</string>
+    <string name="payment_card_desc">دفع عبر بطاقات الخصم والائتمان</string>
+
+    <!-- Order & Delivery Statuses -->
+    <string name="status_placed">تم استلام الطلب</string>
+    <string name="status_confirmed">أكّد المتجر الطلب</string>
+    <string name="status_preparing">جاري التجهيز والتعبئة</string>
+    <string name="status_on_the_way">المندوب في الطريق ليك</string>
+    <string name="status_delivered">تم التوصيل بنجاح</string>
+    <string name="status_cancelled">ملغي</string>
+
+    <!-- Sync Indicators -->
+    <string name="sync_online">متصل (Online)</string>
+    <string name="sync_syncing">جاري المزامنة...</string>
+    <string name="sync_offline">بدون نت (Offline)</string>
+
+    <!-- Onboarding Wizard Flow -->
+    <string name="onboarding_skip">تخطي</string>
+    <string name="onboarding_back">رجوع</string>
+    <string name="onboarding_next">التالي</string>
+    <string name="onboarding_finish">إبدأ هسة</string>
+    <string name="onboarding_step_welcome_header">مرحباً بيك في جوبا قو</string>
+    <string name="onboarding_step_discovery_header">دليل: تفتيش الخدمات</string>
+    <string name="onboarding_step_booking_header">دليل: نظام الحجز والطلب</string>
+    <string name="onboarding_step_tracking_header">تتبع حي ومساعدة النيل</string>
+    <string name="onboarding_step_start_header">إبدأ الاستخدام</string>
+
+    <!-- Onboarding Step 0: Welcome -->
+    <string name="onboarding_welcome_title">مرحباً بيك في جوبا قو</string>
+    <string name="onboarding_welcome_desc">شبكة التجارة والخدمات والحجوزات والتوصيل المخصصة لجوبا، الإستوائية الكبرى، وكل ربوع جنوب السودان. استكشف المطاعم، إحجز الفنادق، أطلب بودا أو تاكسي، وتواصل مع التجار المعتمدين مباشرة.</string>
+    <string name="onboarding_core_services_title">خدماتنا الأساسية بين يديك:</string>
+    <string name="onboarding_feature_food_title">أكل وتوصيل وجبات النيل</string>
+    <string name="onboarding_feature_food_desc">أطيب الأكلات الشعبية والنيليّة (سمك كبر، كسرة، ومطاعم دا فينشي ونيمولي) واصلة لحدي بابك.</string>
+    <string name="onboarding_feature_hotel_title">فنادق ومقرات على النيل</string>
+    <string name="onboarding_feature_hotel_desc">حجز فوري للغرف والأجنحة الفاخرة والاستراحات بأسعار واضحة وموثوقة.</string>
+    <string name="onboarding_feature_transport_title">بودا بودا وتأجير عربات 4x4</string>
+    <string name="onboarding_feature_transport_desc">إحجز سائقين موثوقين، وتوصيل لمطار جوبا الدولي ومشاوير سريعة عبر شوارع المدينة.</string>
+    <string name="onboarding_feature_cargo_title">طيران داخلي وشحن إقليمي</string>
+    <string name="onboarding_feature_cargo_desc">رحلات بين جوبا وواو وملكال، وشحن بضائع بري وجوي لدول شرق أفريقيا.</string>
+    <string name="onboarding_local_advantage_header">مصمم خصيصاً للواقع والظروف المحلية</string>
+    <string name="onboarding_local_advantage_map">خريطة النيل بدون نت</string>
+    <string name="onboarding_local_advantage_battery">توفير البطارية</string>
+    <string name="onboarding_local_advantage_payments">إم-قروش / مومو</string>
+
+    <!-- Onboarding Step 1: Discovery Tutorial -->
+    <string name="onboarding_discovery_title">الخطوة ١: كيف تفتش وتلقى المحتاج ليه</string>
+    <string name="onboarding_discovery_desc">جوبا قو بيسهّل عليك الوصول للخدمات في جنوب السودان حتى لو شبكة الإنترنت ضعيفة.</string>
+    <string name="onboarding_discovery_tip1_title">شريط البحث الذكي</string>
+    <string name="onboarding_discovery_tip1_desc">فتّش باسم المحل، نوع الوجبة (زي \'سمك نيلي طازة\')، الحي (\'هاي سينما\'، \'منوكي\')، أو الكلمات المفتاحية.</string>
+    <string name="onboarding_discovery_tip2_title">فلتر نطاق المناطق</string>
+    <string name="onboarding_discovery_tip2_desc">بدّل بين وسط جوبا، الإستوائية الكبرى، كل ولايات جنوب السودان، ودول الجوار.</string>
+    <string name="onboarding_discovery_tip3_title">وضع الخريطة بدون نت</string>
+    <string name="onboarding_discovery_tip3_desc">إضغط على أيقونة الواي فاي في الشاشة الرئيسية عشان تتصفح الخرائط وأرقام المحلات بدون استهلاك رصيد بيانات.</string>
+    <string name="onboarding_discovery_practice_title">تدريب عملي: جرّب الفلاتر تحت هسة</string>
+
+    <!-- Onboarding Step 2: Booking Tutorial -->
+    <string name="onboarding_booking_title">الخطوة ٢: ٣ خطوات للطلب والحجز السريع</string>
+    <string name="onboarding_booking_desc">طلب الوجبات، حجز العربات، أو حجز الفنادق بياخد أقل من ٣٠ ثانية.</string>
+    <string name="onboarding_booking_step1_title">إضغط \'إحجز هسة\' أو \'طلب سريع\'</string>
+    <string name="onboarding_booking_step1_desc">إختر الخدمة أو الوجبة مباشرة من القائمة أو صفحة التفاصيل.</string>
+    <string name="onboarding_booking_step2_title">أكّد رقم تلفونك وعنوان التوصيل</string>
+    <string name="onboarding_booking_step2_desc">أدخل رقم تلفونك وعلامة مميزة في منطقتك (مثلاً: قريب كنيسة طونقبينق، جوبا).</string>
+    <string name="onboarding_booking_step3_title">إختر طريقة الدفع وأكّد الطلب</string>
+    <string name="onboarding_booking_step3_desc">إختر إم-قروش، إيدن بنك، إم تي إن مومو، أو كاش يد بيد عند الاستلام.</string>
+    <string name="onboarding_booking_practice_title">تدريب عملي: جرّب اختيار طريقة دفع تجريبية</string>
+    <string name="onboarding_demo_success_title">🎉 مبروك! تم إرسال الطلب التجريبي #JB-DEMO</string>
+    <string name="onboarding_demo_success_desc">حتصلك رسالة SMS فورية، وإحداثيات التتبع المباشر، وإشعارات تحديث الحالة لحظة بلحظة.</string>
+
+    <!-- Onboarding Step 3: Live Tracking -->
+    <string name="onboarding_tracking_title">الخطوة ٣: تتبع مباشر ودعم النيل</string>
+    <string name="onboarding_tracking_desc">ما تحتار طلبك وين. جوبا قو بتقدّم تتبع حي للبودا والمندوب وتواصل فوري.</string>
+    <string name="onboarding_tracking_tip1_title">خريطة تتبع النيل الحية</string>
+    <string name="onboarding_tracking_tip1_desc">تابع المندوب ماشي في كباري النيل، طريق المطار، وسوق كاستم لايف مع وقت الوصول التقريبي.</string>
+    <string name="onboarding_tracking_tip2_title">مؤشر المزامنة اللحظي</string>
+    <string name="onboarding_tracking_tip2_desc">راقب مؤشرنا الذكي: 🟢 متصل (تحديث سحابي فوري)، 🔵 بيزامن، أو 🟠 بدون نت (محفوظ بأمان في جهازك).</string>
+    <string name="onboarding_tracking_tip3_title">دعم وخدمة عملاء النيل ٢٤/٧</string>
+    <string name="onboarding_tracking_tip3_desc">إضغط على خانة \'مساعدة\' في أي وقت للتحدث مع فريقنا المحلي للمساعدة في الحجوزات أو التعديلات.</string>
+
+    <!-- Onboarding Step 4: Final Step -->
+    <string name="onboarding_final_title">كدا إنت جاهز تماماً!</string>
+    <string name="onboarding_final_desc">سواء كنت عايز تطلب أكل، تحجز فندق، تطلب بودا، أو تكبّر شغلك في جنوب السودان، جوبا قو معاك خطوة بخطوة.</string>
+    <string name="onboarding_explore_button">إبدأ استكشف جوبا قو</string>
+    <string name="onboarding_register_button">سجّل شركتك / وضع التاجر</string>
+    <string name="onboarding_auth_button">سجّل دخول أو أنشئ حساب بقوقل</string>
+
+    <!-- Checkout & Booking Dialog -->
+    <string name="checkout_title">الدفع وإتمام الحجز</string>
+    <string name="checkout_subtitle">بوابة دفع آمنة في جنوب السودان</string>
+    <string name="checkout_provider_label">المزوّد</string>
+    <string name="checkout_customer_name_label">اسمك الكامل</string>
+    <string name="checkout_phone_label">رقم التلفون (مثال: +211 92...)</string>
+    <string name="checkout_landmark_label">عنوان التوصيل / أقرب علامة بارزة</string>
+    <string name="checkout_quick_locations_title">إختر منطقة سريعة في جوبا:</string>
+    <string name="checkout_payment_method_title">إختر طريقة الدفع</string>
+    <string name="checkout_account_number_label">رقم المحفظة / التلفون / البطاقة</string>
+    <string name="checkout_confirm_order_btn">تأكيد وإرسال الطلب</string>
+    <string name="checkout_processing">جاري معالجة الطلب بأمان...</string>
+
+    <!-- Order Placed & Success Dialog -->
+    <string name="order_success_title">مبروك! تم إرسال طلبك بنجاح</string>
+    <string name="order_success_subtitle">تم إرسال طلبك واستلامه من قبل المحل أو المزوّد في جوبا.</string>
+    <string name="order_success_order_id">رقم الطلب:</string>
+    <string name="order_success_payment_status">طريقة الدفع:</string>
+    <string name="order_success_eta">الوقت التقريبي للوصول:</string>
+    <string name="order_success_eta_val">٢٥ - ٤٠ دقيقة</string>
+    <string name="order_success_track_btn">تتبع المندوب حي بالخريطة</string>
+    <string name="order_success_done_btn">رجوع للشاشة الرئيسية</string>
+
+    <!-- Service Detail Modal -->
+    <string name="service_detail_title">تفاصيل الخدمة</string>
+    <string name="service_detail_verified">تاجر مضمون ومرخص في جنوب السودان</string>
+    <string name="service_detail_scope_coverage">نطاق التغطية الجغرافية:</string>
+    <string name="service_detail_reviews_header">تقييمات الزبائن الحقيقيين</string>
+    <string name="service_detail_leave_review">قيّم الخدمة وأكتب رأيك</string>
+    <string name="service_detail_write_review_hint">شارك رأيك وتجربتك مع هذا التاجر في جوبا...</string>
+    <string name="service_detail_submit_review">نشر التقييم</string>
+    <string name="service_detail_book_now">إحجز هذه الخدمة هسة</string>
+
+    <!-- Business & Provider Registration Dialog -->
+    <string name="business_reg_title">تسجيل نشاط تجاري / مزوّد خدمة</string>
+    <string name="business_reg_subtitle">إنضم لأكبر شبكة تجارية رقمية في جنوب السودان</string>
+    <string name="business_reg_name_label">اسم المحل أو الشركة</string>
+    <string name="business_reg_category_label">النشاط الأساسي</string>
+    <string name="business_reg_scope_label">نطاق العمل والتوصيل</string>
+    <string name="business_reg_phone_label">رقم التلفون للتواصل (+211)</string>
+    <string name="business_reg_location_label">الموقع والسوق في جوبا</string>
+    <string name="business_reg_desc_label">وصف الخدمات والأسعار</string>
+    <string name="business_reg_submit">إرسال طلب تسجيل التاجر</string>
+
+    <!-- Live GPS Tracking Screen -->
+    <string name="tracking_header_title">متابعة الموقع وتتبع الـ GPS</string>
+    <string name="tracking_header_subtitle">تتبع حركة المندوبين والسيارات مباشرة في جوبا</string>
+    <string name="tracking_no_order">مافي طلبات نشطة حالياً</string>
+    <string name="tracking_no_order_desc">أطلب وجبة، أو مشوار بودا، أو احجز فندق لتتبع خط السير مباشرة على الخريطة.</string>
+    <string name="tracking_driver_label">المندوب / السائق:</string>
+    <string name="tracking_destination_label">مكان التوصيل:</string>
+    <string name="tracking_eta_label">الوصول المتوقع:</string>
+
+    <!-- Support Chat Screen -->
+    <string name="support_chat_header">فريق مساعدة ودعم النيل</string>
+    <string name="support_chat_subtitle">خدمة محلية ٢٤/٧ في كل ولايات جنوب السودان</string>
+    <string name="support_chat_input_hint">أكتب رسالتك أو استفسارك هنا...</string>
+    <string name="support_chat_send_btn">إرسال</string>
+
+    <!-- Orders History Screen -->
+    <string name="orders_screen_title">طلباتي وحجوزاتي</string>
+    <string name="orders_screen_subtitle">سجل كل الطلبات السابقة والحالية في جوبا</string>
+    <string name="orders_empty_title">لسة ما طلبت حاجة</string>
+    <string name="orders_empty_desc">تصفح المطاعم، الفنادق، المشاوير، والرحلات وسجل أول طلب ليك هسة.</string>
+    <string name="orders_track_btn">تتبع GPS</string>
+
+    <!-- Merchant Dashboard Screen -->
+    <string name="merchant_hub_title">لوحة عمليات التاجر</string>
+    <string name="merchant_hub_subtitle">إدارة الطلبات، وفرة المخزون، وحساب الأرباح</string>
+    <string name="merchant_total_revenue">إجمالي الدخل (جنوب سوداني)</string>
+    <string name="merchant_active_orders">طلبات نشطة</string>
+    <string name="merchant_active_listings">الخدمات المعروضة</string>
+    <string name="merchant_export_csv">تنزيل تقرير مبيعات CSV</string>
+    <string name="merchant_manage_items">إدارة توفر الخدمات</string>
+
+    <!-- Notifications Sheet -->
+    <string name="notifications_title">التنبيهات والإشعارات</string>
+    <string name="notifications_empty">مافي تنبيهات جديدة في الوقت الحالي.</string>
+
+    <!-- User Auth & Profile Dialog -->
+    <string name="auth_dialog_title">الحساب وتسجيل الدخول</string>
+    <string name="auth_dialog_subtitle">مزامنة طلباتك وحجوزاتك ومتجرك عبر كل أجهزتك</string>
+    <string name="auth_google_signin">المتابعة بحساب قوقل (Google)</string>
+    <string name="auth_profile_signed_in">مسجل الدخول</string>
+    <string name="auth_sign_out">تسجيل الخروج</string>
+</resources>

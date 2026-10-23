@@ -1,0 +1,247 @@
+<resources>
+    <!-- App & General -->
+    <string name="app_name">JubaGo</string>
+    <string name="default_web_client_id">1083478921-jubago-client.apps.googleusercontent.com</string>
+    <string name="app_country_badge">SOUTH SUDAN</string>
+    <string name="app_title">JubaGo</string>
+    <string name="app_tagline">South Sudan\'s premier commerce, booking and delivery platform</string>
+
+    <!-- Navigation Bar -->
+    <string name="nav_explore">Explore</string>
+    <string name="nav_tracking">GPS Track</string>
+    <string name="nav_support">Support</string>
+    <string name="nav_orders">Bookings</string>
+    <string name="nav_merchant">Merchant</string>
+
+    <!-- Explore Screen & Header -->
+    <string name="hero_title">JubaGo South Sudan</string>
+    <string name="hero_subtitle">Cars • Flights • Hotels • Local Food Delivery</string>
+    <string name="hero_tagline">Empowering Juba businesses • Real-time GPS &amp; Mobile Money</string>
+    <string name="hero_tutorial_button">New User? Take 1-Min Feature Guide</string>
+    <string name="search_placeholder">Search Kisra, 4x4 Cars, Flights, Hotels...</string>
+    <string name="search_label">Search</string>
+    <string name="verified_only">Show Verified Vendors Only</string>
+    <string name="offline_cache_active">Offline Nile Map Active</string>
+    <string name="offline_notice">Using cached Juba coordinates. Bookings will sync when back online.</string>
+
+    <!-- Service Categories -->
+    <string name="category_all">All Services</string>
+    <string name="category_food">Food &amp; Dining</string>
+    <string name="category_hotels">Hotels &amp; Stays</string>
+    <string name="category_cars">Rides &amp; 4x4 Cars</string>
+    <string name="category_flights">Juba Flights &amp; Cargo</string>
+    <string name="category_grocery">Supermarket &amp; Goods</string>
+
+    <!-- Geographic Coverage Scopes -->
+    <string name="scope_all">All Destinations</string>
+    <string name="scope_juba_local">Juba City &amp; Environs</string>
+    <string name="scope_national">Across South Sudan</string>
+    <string name="scope_regional">East Africa Regional</string>
+    <string name="scope_global">Beyond Africa &amp; Global</string>
+
+    <!-- Actions & Common Buttons -->
+    <string name="book_now">Book Now</string>
+    <string name="quick_book">Quick Order</string>
+    <string name="view_details">View Details</string>
+    <string name="quick_book_cars">Ride / Rent</string>
+    <string name="quick_book_flights">Book Seat</string>
+    <string name="quick_book_hotels">Reserve</string>
+    <string name="quick_book_food">Order Food</string>
+    <string name="quick_book_default">Order Now</string>
+    <string name="cancel_button">Cancel</string>
+    <string name="confirm_button">Confirm</string>
+    <string name="close_button">Close</string>
+    <string name="save_button">Save</string>
+
+    <!-- User Roles -->
+    <string name="role_customer">Customer View</string>
+    <string name="role_merchant">Business Owner Mode</string>
+    <string name="role_courier">Delivery Rider View</string>
+    <string name="select_language">Change Language</string>
+    <string name="language_toggle_label">Language / Thok / لغة</string>
+
+    <!-- Merchant Onboarding Banner -->
+    <string name="register_business_banner_title">Register Your Business &amp; Services</string>
+    <string name="register_business_banner_desc">Shops, apartments, hotels, car rentals &amp; restaurants: provide services across South Sudan &amp; beyond Africa.</string>
+    <string name="register_button">Register</string>
+
+    <!-- Payment Methods -->
+    <string name="payment_mgurush_title">m-GURUSH</string>
+    <string name="payment_mgurush_desc">South Sudan premier mobile money</string>
+    <string name="payment_momo_title">MTN MoMo</string>
+    <string name="payment_momo_desc">Instant MTN Mobile Money transfer</string>
+    <string name="payment_digitel_title">Digitel Pay</string>
+    <string name="payment_digitel_desc">Digitel telecommunication wallet</string>
+    <string name="payment_cash_title">Cash on Delivery</string>
+    <string name="payment_cash_desc">Pay cash in SSP to courier upon arrival</string>
+    <string name="payment_card_title">Bank Card (Visa / MC)</string>
+    <string name="payment_card_desc">Credit / Debit Card processing</string>
+
+    <!-- Order & Delivery Statuses -->
+    <string name="status_placed">Order Placed</string>
+    <string name="status_confirmed">Confirmed by Provider</string>
+    <string name="status_preparing">Preparing / Dispatching</string>
+    <string name="status_on_the_way">Rider On The Way</string>
+    <string name="status_delivered">Delivered &amp; Completed</string>
+    <string name="status_cancelled">Cancelled</string>
+
+    <!-- Sync Indicators -->
+    <string name="sync_online">Online</string>
+    <string name="sync_syncing">Syncing...</string>
+    <string name="sync_offline">Offline</string>
+
+    <!-- Onboarding Wizard Flow -->
+    <string name="onboarding_skip">Skip</string>
+    <string name="onboarding_back">Back</string>
+    <string name="onboarding_next">Next</string>
+    <string name="onboarding_finish">Start</string>
+    <string name="onboarding_step_welcome_header">Welcome to JubaGo</string>
+    <string name="onboarding_step_discovery_header">Tutorial: Service Discovery</string>
+    <string name="onboarding_step_booking_header">Tutorial: Booking System</string>
+    <string name="onboarding_step_tracking_header">Live Tracking &amp; Nile Support</string>
+    <string name="onboarding_step_start_header">Get Started</string>
+
+    <!-- Onboarding Step 0: Welcome -->
+    <string name="onboarding_welcome_title">Welcome to JubaGo</string>
+    <string name="onboarding_welcome_desc">The unified commerce, booking, and delivery network tailored for Juba, Greater Equatoria, and beyond. Explore restaurants, book hotels, hail transport, and connect directly with verified merchants.</string>
+    <string name="onboarding_core_services_title">Core Services at Your Fingertips:</string>
+    <string name="onboarding_feature_food_title">Food &amp; Nile Cuisine Delivery</string>
+    <string name="onboarding_feature_food_desc">Hot meals from Juba\'s best kitchens (Nile King, Da Vinci, Nimule Kitchen) delivered directly to your home or office.</string>
+    <string name="onboarding_feature_hotel_title">Hotels &amp; Riverside Accommodations</string>
+    <string name="onboarding_feature_hotel_desc">Instant reservations for luxury suites, Nile views, and budget-friendly guest houses with transparent rates.</string>
+    <string name="onboarding_feature_transport_title">Boda Boda &amp; Car Rental Logistics</string>
+    <string name="onboarding_feature_transport_desc">Book vetted drivers, airport pickups to JIA, and express courier dispatch across all major roads.</string>
+    <string name="onboarding_feature_cargo_title">Domestic Air &amp; Regional Cargo</string>
+    <string name="onboarding_feature_cargo_desc">Connect flights between Juba, Wau, Malakal, and cross-border transport across East Africa.</string>
+    <string name="onboarding_local_advantage_header">Built Specifically for Local Reality</string>
+    <string name="onboarding_local_advantage_map">Offline Nile Map</string>
+    <string name="onboarding_local_advantage_battery">Battery Saver</string>
+    <string name="onboarding_local_advantage_payments">m-GURUSH / MoMo</string>
+
+    <!-- Onboarding Step 1: Discovery Tutorial -->
+    <string name="onboarding_discovery_title">Step 1: Finding What You Need</string>
+    <string name="onboarding_discovery_desc">JubaGo makes it simple to discover businesses across South Sudan, even when internet connections fluctuate.</string>
+    <string name="onboarding_discovery_tip1_title">Contextual Search Bar</string>
+    <string name="onboarding_discovery_tip1_desc">Search by vendor name, meal type (e.g., \'Fresh Nile Perch\'), neighborhood (\'Hai Cinema\', \'Munuki\'), or keyword.</string>
+    <string name="onboarding_discovery_tip2_title">Geographic Scope Filter</string>
+    <string name="onboarding_discovery_tip2_desc">Toggle between Central Juba, Greater Equatoria, All South Sudan States, and Regional East Africa.</string>
+    <string name="onboarding_discovery_tip3_title">Offline Map Tile Mode</string>
+    <string name="onboarding_discovery_tip3_desc">Tap the Wi-Fi icon on the home screen to access cached maps and saved provider contacts without data.</string>
+    <string name="onboarding_discovery_practice_title">Interactive Practice: Try Filtering Below</string>
+
+    <!-- Onboarding Step 2: Booking Tutorial -->
+    <string name="onboarding_booking_title">Step 2: 3-Step Fast Booking</string>
+    <string name="onboarding_booking_desc">Ordering meals, scheduling transport, or booking rooms takes less than 30 seconds.</string>
+    <string name="onboarding_booking_step1_title">Tap \'Book Now\' or \'Quick Order\'</string>
+    <string name="onboarding_booking_step1_desc">Choose your item directly from the list or service details screen.</string>
+    <string name="onboarding_booking_step2_title">Confirm Contact &amp; Delivery Address</string>
+    <string name="onboarding_booking_step2_desc">Provide your phone number and landmark (e.g. Near Tongping Church, Juba).</string>
+    <string name="onboarding_booking_step3_title">Select Payment &amp; Confirm</string>
+    <string name="onboarding_booking_step3_desc">Choose m-GURUSH, Eden Mobile, MTN MoMo, or Cash on Delivery.</string>
+    <string name="onboarding_booking_practice_title">Interactive Practice: Try a Demo Payment Choice</string>
+    <string name="onboarding_demo_success_title">🎉 Success! Order #JB-DEMO Placed</string>
+    <string name="onboarding_demo_success_desc">You will instantly receive an SMS confirmation, live GPS tracking coordinates, and status notifications.</string>
+
+    <!-- Onboarding Step 3: Live Tracking -->
+    <string name="onboarding_tracking_title">Step 3: Real-Time Tracking &amp; Support</string>
+    <string name="onboarding_tracking_desc">Never wonder where your parcel, ride, or order is. JubaGo provides live position updates and instant messaging.</string>
+    <string name="onboarding_tracking_tip1_title">Live Nile Map Tracker</string>
+    <string name="onboarding_tracking_tip1_desc">Track couriers moving along Nile bridges, Airport Road, and Custom market in real time with estimated arrival times.</string>
+    <string name="onboarding_tracking_tip2_title">Real-Time Sync Indicators</string>
+    <string name="onboarding_tracking_tip2_desc">Monitor our smart indicator: 🟢 Online (live cloud updates), 🔵 Syncing (transmitting), or 🟠 Offline (queued safely on device).</string>
+    <string name="onboarding_tracking_tip3_title">24/7 Nile Concierge &amp; Support</string>
+    <string name="onboarding_tracking_tip3_desc">Tap the \'Support Chat\' tab anytime to message our friendly local team for booking help, changes, or directions.</string>
+
+    <!-- Onboarding Step 4: Final Step -->
+    <string name="onboarding_final_title">You\'re All Set!</string>
+    <string name="onboarding_final_desc">Whether you want to order food, book a room, hire a driver, or expand your business across South Sudan, JubaGo is your trusted partner.</string>
+    <string name="onboarding_explore_button">Start Exploring JubaGo</string>
+    <string name="onboarding_register_button">Register My Business / Merchant Mode</string>
+    <string name="onboarding_auth_button">Sign In or Create Account with Google</string>
+
+    <!-- Checkout & Booking Dialog -->
+    <string name="checkout_title">Checkout &amp; Booking</string>
+    <string name="checkout_subtitle">Secure South Sudan Gateway</string>
+    <string name="checkout_provider_label">Provider</string>
+    <string name="checkout_customer_name_label">Your Full Name</string>
+    <string name="checkout_phone_label">Phone Number (e.g. +211 92...)</string>
+    <string name="checkout_landmark_label">Delivery Address / Landmark</string>
+    <string name="checkout_quick_locations_title">Quick Select Landmark in Juba:</string>
+    <string name="checkout_payment_method_title">Select Payment Method</string>
+    <string name="checkout_account_number_label">Wallet / Phone / Card Number</string>
+    <string name="checkout_confirm_order_btn">Confirm &amp; Place Order</string>
+    <string name="checkout_processing">Processing Secure Order...</string>
+
+    <!-- Order Placed & Success Dialog -->
+    <string name="order_success_title">Order Placed Successfully!</string>
+    <string name="order_success_subtitle">Your order has been transmitted and received by the provider in Juba.</string>
+    <string name="order_success_order_id">Order Reference:</string>
+    <string name="order_success_payment_status">Payment:</string>
+    <string name="order_success_eta">Estimated Arrival:</string>
+    <string name="order_success_eta_val">25 - 40 Mins</string>
+    <string name="order_success_track_btn">Track Order Live GPS</string>
+    <string name="order_success_done_btn">Back to Explore</string>
+
+    <!-- Service Detail Modal -->
+    <string name="service_detail_title">Service Details</string>
+    <string name="service_detail_verified">Verified South Sudan Merchant</string>
+    <string name="service_detail_scope_coverage">Geographic Coverage:</string>
+    <string name="service_detail_reviews_header">Verified Customer Reviews</string>
+    <string name="service_detail_leave_review">Rate &amp; Leave a Review</string>
+    <string name="service_detail_write_review_hint">Share your feedback about this Juba provider...</string>
+    <string name="service_detail_submit_review">Submit Review</string>
+    <string name="service_detail_book_now">Book This Service Now</string>
+
+    <!-- Business & Provider Registration Dialog -->
+    <string name="business_reg_title">Register Business / Merchant</string>
+    <string name="business_reg_subtitle">Join South Sudan\'s growing digital commerce network</string>
+    <string name="business_reg_name_label">Business / Shop Name</string>
+    <string name="business_reg_category_label">Primary Service Category</string>
+    <string name="business_reg_scope_label">Coverage Territory</string>
+    <string name="business_reg_phone_label">Contact Phone (+211)</string>
+    <string name="business_reg_location_label">Physical Location / Market in Juba</string>
+    <string name="business_reg_desc_label">Services &amp; Offerings Description</string>
+    <string name="business_reg_submit">Submit Business Registration</string>
+
+    <!-- Live GPS Tracking Screen -->
+    <string name="tracking_header_title">Live GPS Tracking</string>
+    <string name="tracking_header_subtitle">Real-time courier &amp; vehicle navigation in Juba</string>
+    <string name="tracking_no_order">No Active Orders Yet</string>
+    <string name="tracking_no_order_desc">Place an order for food, boda boda ride, or hotel to track live courier movement.</string>
+    <string name="tracking_driver_label">Courier / Driver:</string>
+    <string name="tracking_destination_label">Delivery Landmark:</string>
+    <string name="tracking_eta_label">Estimated Arrival:</string>
+
+    <!-- Support Chat Screen -->
+    <string name="support_chat_header">Nile Concierge &amp; Support</string>
+    <string name="support_chat_subtitle">Live 24/7 assistance across South Sudan</string>
+    <string name="support_chat_input_hint">Type your message or question...</string>
+    <string name="support_chat_send_btn">Send</string>
+
+    <!-- Orders History Screen -->
+    <string name="orders_screen_title">My Orders &amp; Bookings</string>
+    <string name="orders_screen_subtitle">Track past and current reservations across Juba</string>
+    <string name="orders_empty_title">No Bookings Yet</string>
+    <string name="orders_empty_desc">Browse our restaurants, hotels, cars, and flights to make your first order.</string>
+    <string name="orders_track_btn">Track GPS</string>
+
+    <!-- Merchant Dashboard Screen -->
+    <string name="merchant_hub_title">Merchant Operations Hub</string>
+    <string name="merchant_hub_subtitle">Manage orders, stock availability, and revenue</string>
+    <string name="merchant_total_revenue">Total Revenue (SSP)</string>
+    <string name="merchant_active_orders">Active Orders</string>
+    <string name="merchant_active_listings">Listed Services</string>
+    <string name="merchant_export_csv">Export CSV Report</string>
+    <string name="merchant_manage_items">Manage Service Availability</string>
+
+    <!-- Notifications Sheet -->
+    <string name="notifications_title">Notifications &amp; Alerts</string>
+    <string name="notifications_empty">No new alerts at this time.</string>
+
+    <!-- User Auth & Profile Dialog -->
+    <string name="auth_dialog_title">Account &amp; Sign-In</string>
+    <string name="auth_dialog_subtitle">Sync your orders, bookings, and merchant store across devices</string>
+    <string name="auth_google_signin">Continue with Google Account</string>
+    <string name="auth_profile_signed_in">Signed In</string>
+    <string name="auth_sign_out">Sign Out</string>
+</resources>
