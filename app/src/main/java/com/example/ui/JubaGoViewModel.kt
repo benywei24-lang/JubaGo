@@ -285,12 +285,29 @@ class JubaGoViewModel(
         }
     }
 
+    val searchHistory: StateFlow<List<com.example.data.local.SearchQueryEntity>> = repository.searchHistory
+
     fun setCategory(category: ServiceCategory) {
         _selectedCategory.value = category
     }
 
     fun setSearchQuery(query: String) {
         _searchQuery.value = query
+    }
+
+    fun submitSearchQuery(query: String) {
+        _searchQuery.value = query
+        if (query.trim().length >= 2) {
+            repository.recordSearchQuery(query.trim(), _selectedCategory.value.name)
+        }
+    }
+
+    fun removeSearchHistoryQuery(query: String) {
+        repository.removeSearchQuery(query)
+    }
+
+    fun clearSearchHistory() {
+        repository.clearSearchHistory()
     }
 
     fun toggleOnlyVerified() {

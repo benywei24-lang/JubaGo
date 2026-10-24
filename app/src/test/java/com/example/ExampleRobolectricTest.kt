@@ -506,4 +506,64 @@ class ExampleRobolectricTest {
         val currentUser = authProvider.currentUser.value
         assertEquals("Beny Wei", currentUser?.displayName)
     }
+
+    @Test
+    fun `room database search history saves, retrieves, and clears queries correctly`() = kotlinx.coroutines.runBlocking {
+        val context = ApplicationProvider.getApplicationContext<Context>()
+        val db = com.example.data.local.JubaGoDatabase.getDatabase(context)
+        val dao = db.searchHistoryDao()
+
+        dao.clearAll()
+        assertEquals(0, dao.getRecentSearches().size)
+
+        dao.insertSearch(
+            com.example.data.local.SearchQueryEntity(
+                query = "Fresh Nile Tilapia",
+                categoryContext = "FOOD",
+                timestamp = System.currentTimeMillis() - 5000
+            )
+        )
+        dao.insertSearch(
+            com.example.data.local.SearchQueryEntity(
+                query = "Boda Boda Ride",
+                categoryContext = "CARS",
+                timestamp = System.currentTimeMillis()
+            )
+        )
+
+        val recent = dao.getRecentSearches()
+        assertEquals(2, recent.size)
+        assertEquals("Boda Boda Ride", recent[0].query)
+        assertEquals("Fresh Nile Tilapia", recent[1].query)
+
+        // Delete single query
+        dao.deleteSearchByQuery("Fresh Nile Tilapia")
+        val afterDelete = dao.getRecentSearches()
+        assertEquals(1, afterDelete.size)
+        assertEquals("Boda Boda Ride", afterDelete[0].query)
+
+        // Clear all
+        dao.clearAll()
+        assertEquals(0, dao.getRecentSearches().size)
+    }
+
+    @Test
+    fun `category filter system filters services accurately across categories`() {
+        val repo = com.example.data.JubaGoRepository()
+        val all = repo.services.value
+
+        val foodServices = all.filter { it.category == ServiceCategory.FOOD }
+        val carServices = all.filter { it.category == ServiceCategory.CARS }
+        val flightServices = all.filter { it.category == ServiceCategory.FLIGHTS }
+        val hotelServices = all.filter { it.category == ServiceCategory.HOTELS }
+        val groceryServices = all.filter { it.category == ServiceCategory.GROCERY }
+
+        assertTrue("Must have Food services", foodServices.isNotEmpty())
+        assertTrue("Must have Cars services", carServices.isNotEmpty())
+        assertTrue("Must have Flights services", flightServices.isNotEmpty())
+        assertTrue("Must have Hotels services", hotelServices.isNotEmpty())
+        assertTrue("Must have Grocery services", groceryServices.isNotEmpty())
+
+        assertEquals(all.size, foodServices.size + carServices.size + flightServices.size + hotelServices.size + groceryServices.size)
+    }
 }

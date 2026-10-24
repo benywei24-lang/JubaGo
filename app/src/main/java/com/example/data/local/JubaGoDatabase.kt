@@ -5,11 +5,16 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [OrderEntity::class, FavoriteEntity::class], version = 2, exportSchema = false)
+@Database(
+    entities = [OrderEntity::class, FavoriteEntity::class, SearchQueryEntity::class],
+    version = 3,
+    exportSchema = false
+)
 abstract class JubaGoDatabase : RoomDatabase() {
 
     abstract fun orderDao(): OrderDao
     abstract fun favoriteDao(): FavoriteDao
+    abstract fun searchHistoryDao(): SearchHistoryDao
 
     companion object {
         @Volatile

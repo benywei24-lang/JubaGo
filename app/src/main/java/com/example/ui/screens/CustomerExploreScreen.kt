@@ -20,7 +20,14 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.text.KeyboardActions
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.filled.History
+import androidx.compose.ui.text.input.ImeAction
+import com.example.data.local.SearchQueryEntity
 import androidx.compose.material.icons.filled.AccessTime
 import androidx.compose.material.icons.filled.Apps
 import androidx.compose.material.icons.filled.Check
@@ -86,10 +93,14 @@ fun CustomerExploreScreen(
     onlyVerified: Boolean,
     isOffline: Boolean,
     unreadNotificationCount: Int,
+    searchHistory: List<SearchQueryEntity> = emptyList(),
     onCategorySelected: (ServiceCategory) -> Unit,
     onScopeSelected: (CoverageScope) -> Unit,
     onOpenBusinessRegistration: () -> Unit,
     onSearchQueryChanged: (String) -> Unit,
+    onSearchQuerySubmitted: (String) -> Unit = {},
+    onRemoveSearchHistoryQuery: (String) -> Unit = {},
+    onClearSearchHistory: () -> Unit = {},
     onToggleVerified: () -> Unit,
     onToggleOffline: () -> Unit,
     onOpenNotifications: () -> Unit,
@@ -207,7 +218,7 @@ fun CustomerExploreScreen(
             }
         }
 
-        // Top Search Bar for Filtering Travel & Food Service Listings
+        // Top Search Bar for Filtering Travel & Food Service Listings with Room Search History & Category Filter System
         item {
             Card(
                 modifier = Modifier
@@ -218,7 +229,8 @@ fun CustomerExploreScreen(
                 colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
                 elevation = CardDefaults.cardElevation(defaultElevation = 2.dp)
             ) {
-                Column(modifier = Modifier.padding(12.dp)) {
+                Column(modifier = Modifier.padding(14.dp)) {
+                    // 1. Search Bar
                     OutlinedTextField(
                         value = searchQuery,
                         onValueChange = onSearchQueryChanged,
@@ -251,6 +263,10 @@ fun CustomerExploreScreen(
                                 }
                             }
                         },
+                        keyboardOptions = KeyboardOptions(imeAction = ImeAction.Search),
+                        keyboardActions = KeyboardActions(
+                            onSearch = { onSearchQuerySubmitted(searchQuery) }
+                        ),
                         modifier = Modifier
                             .fillMaxWidth()
                             .testTag("home_top_search_bar")
@@ -265,115 +281,251 @@ fun CustomerExploreScreen(
                         singleLine = true
                     )
 
-                    Spacer(modifier = Modifier.height(10.dp))
+                    // 2. Room Database Search History Section
+                    if (searchHistory.isNotEmpty()) {
+                        Spacer(modifier = Modifier.height(10.dp))
+                        Row(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.SpaceBetween,
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Row(verticalAlignment = Alignment.CenterVertically) {
+                                Icon(
+                                    Icons.Default.History,
+                                    contentDescription = null,
+                                    tint = MaterialTheme.colorScheme.primary,
+                                    modifier = Modifier.size(15.dp)
+                                )
+                                Spacer(modifier = Modifier.width(6.dp))
+                                Text(
+                                    text = if (currentLanguage == AppLanguage.JUBA_ARABIC) "عمليات البحث الأخيرة" else "Recent Searches",
+                                    style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold),
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                                )
+                            }
 
-                    // Quick Travel and Food Category Filter Shortcuts
+                            Text(
+                                text = if (currentLanguage == AppLanguage.JUBA_ARABIC) "مسح الكل" else "Clear All",
+                                style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.SemiBold),
+                                color = MaterialTheme.colorScheme.error,
+                                modifier = Modifier
+                                    .clickable { onClearSearchHistory() }
+                                    .testTag("clear_search_history_button")
+                            )
+                        }
+
+                        Spacer(modifier = Modifier.height(6.dp))
+
+                        LazyRow(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .testTag("search_history_row"),
+                            horizontalArrangement = Arrangement.spacedBy(6.dp)
+                        ) {
+                            items(searchHistory, key = { it.id }) { historyItem ->
+                                Surface(
+                                    shape = RoundedCornerShape(8.dp),
+                                    color = MaterialTheme.colorScheme.surfaceVariant.copy(alpha = 0.6f),
+                                    border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant.copy(alpha = 0.5f)),
+                                    modifier = Modifier
+                                        .clickable {
+                                            onSearchQueryChanged(historyItem.query)
+                                            onSearchQuerySubmitted(historyItem.query)
+                                        }
+                                        .testTag("search_history_chip_${historyItem.id}")
+                                ) {
+                                    Row(
+                                        modifier = Modifier.padding(horizontal = 8.dp, vertical = 6.dp),
+                                        verticalAlignment = Alignment.CenterVertically
+                                    ) {
+                                        Icon(
+                                            Icons.Default.Search,
+                                            contentDescription = null,
+                                            tint = MaterialTheme.colorScheme.primary,
+                                            modifier = Modifier.size(12.dp)
+                                        )
+                                        Spacer(modifier = Modifier.width(4.dp))
+                                        Text(
+                                            text = historyItem.query,
+                                            style = MaterialTheme.typography.labelSmall.copy(fontSize = 11.sp),
+                                            color = MaterialTheme.colorScheme.onSurface
+                                        )
+                                        Spacer(modifier = Modifier.width(6.dp))
+                                        Icon(
+                                            Icons.Default.Close,
+                                            contentDescription = "Remove query",
+                                            tint = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.7f),
+                                            modifier = Modifier
+                                                .size(14.dp)
+                                                .clip(CircleShape)
+                                                .clickable { onRemoveSearchHistoryQuery(historyItem.query) }
+                                                .testTag("remove_query_${historyItem.id}")
+                                        )
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    Spacer(modifier = Modifier.height(12.dp))
+
+                    // 3. Category Filter System (Food, Travel, Delivery, Flights, Hotels, etc.)
                     Row(
                         modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween,
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Text(
+                            text = if (currentLanguage == AppLanguage.JUBA_ARABIC) "تصنيف الخدمات" else "Category Filter System",
+                            style = MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.Bold),
+                            color = MaterialTheme.colorScheme.primary
+                        )
+                        if (selectedCategory != ServiceCategory.ALL) {
+                            Text(
+                                text = "Reset to All",
+                                style = MaterialTheme.typography.labelSmall.copy(fontWeight = FontWeight.Bold),
+                                color = MaterialTheme.colorScheme.error,
+                                modifier = Modifier
+                                    .clickable { onCategorySelected(ServiceCategory.ALL) }
+                                    .testTag("reset_category_filter_button")
+                            )
+                        }
+                    }
+
+                    Spacer(modifier = Modifier.height(6.dp))
+
+                    LazyRow(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .testTag("category_filter_row"),
                         horizontalArrangement = Arrangement.spacedBy(6.dp),
                         verticalAlignment = Alignment.CenterVertically
                     ) {
-                        // All Services reset
-                        FilterChip(
-                            selected = selectedCategory == ServiceCategory.ALL && searchQuery.isEmpty(),
-                            onClick = {
-                                onCategorySelected(ServiceCategory.ALL)
-                                if (searchQuery.isNotEmpty()) onSearchQueryChanged("")
-                            },
-                            label = { Text("All", fontSize = 11.sp, fontWeight = FontWeight.Bold) },
-                            colors = FilterChipDefaults.filterChipColors(
-                                selectedContainerColor = MaterialTheme.colorScheme.primary,
-                                selectedLabelColor = Color.White
-                            ),
-                            modifier = Modifier.testTag("quick_filter_all")
-                        )
+                        // All Services
+                        item {
+                            FilterChip(
+                                selected = selectedCategory == ServiceCategory.ALL,
+                                onClick = { onCategorySelected(ServiceCategory.ALL) },
+                                label = { Text("All", fontSize = 11.sp, fontWeight = FontWeight.Bold) },
+                                leadingIcon = {
+                                    Icon(Icons.Default.Apps, contentDescription = null, modifier = Modifier.size(13.dp))
+                                },
+                                colors = FilterChipDefaults.filterChipColors(
+                                    selectedContainerColor = MaterialTheme.colorScheme.primary,
+                                    selectedLabelColor = Color.White,
+                                    selectedLeadingIconColor = Color.White
+                                ),
+                                modifier = Modifier.testTag("category_filter_all")
+                            )
+                        }
 
-                        // Quick Food Filter
-                        FilterChip(
-                            selected = selectedCategory == ServiceCategory.FOOD,
-                            onClick = {
-                                if (selectedCategory == ServiceCategory.FOOD) {
-                                    onCategorySelected(ServiceCategory.ALL)
-                                } else {
-                                    onCategorySelected(ServiceCategory.FOOD)
-                                }
-                            },
-                            label = { Text("Food", fontSize = 11.sp, fontWeight = FontWeight.Bold) },
-                            leadingIcon = {
-                                Icon(Icons.Default.Restaurant, contentDescription = null, modifier = Modifier.size(13.dp))
-                            },
-                            colors = FilterChipDefaults.filterChipColors(
-                                selectedContainerColor = MaterialTheme.colorScheme.primaryContainer,
-                                selectedLabelColor = MaterialTheme.colorScheme.onPrimaryContainer
-                            ),
-                            modifier = Modifier.testTag("quick_filter_food")
-                        )
+                        // Food & Dining
+                        item {
+                            FilterChip(
+                                selected = selectedCategory == ServiceCategory.FOOD,
+                                onClick = {
+                                    onCategorySelected(
+                                        if (selectedCategory == ServiceCategory.FOOD) ServiceCategory.ALL else ServiceCategory.FOOD
+                                    )
+                                },
+                                label = { Text("Food", fontSize = 11.sp, fontWeight = FontWeight.Bold) },
+                                leadingIcon = {
+                                    Icon(Icons.Default.Restaurant, contentDescription = null, modifier = Modifier.size(13.dp))
+                                },
+                                colors = FilterChipDefaults.filterChipColors(
+                                    selectedContainerColor = MaterialTheme.colorScheme.primaryContainer,
+                                    selectedLabelColor = MaterialTheme.colorScheme.onPrimaryContainer
+                                ),
+                                modifier = Modifier.testTag("category_filter_food")
+                            )
+                        }
 
-                        // Quick Cars / Travel Filter
-                        FilterChip(
-                            selected = selectedCategory == ServiceCategory.CARS,
-                            onClick = {
-                                if (selectedCategory == ServiceCategory.CARS) {
-                                    onCategorySelected(ServiceCategory.ALL)
-                                } else {
-                                    onCategorySelected(ServiceCategory.CARS)
-                                }
-                            },
-                            label = { Text("Cars", fontSize = 11.sp, fontWeight = FontWeight.Bold) },
-                            leadingIcon = {
-                                Icon(Icons.Default.DirectionsCar, contentDescription = null, modifier = Modifier.size(13.dp))
-                            },
-                            colors = FilterChipDefaults.filterChipColors(
-                                selectedContainerColor = MaterialTheme.colorScheme.primaryContainer,
-                                selectedLabelColor = MaterialTheme.colorScheme.onPrimaryContainer
-                            ),
-                            modifier = Modifier.testTag("quick_filter_cars")
-                        )
+                        // Travel & Rides
+                        item {
+                            FilterChip(
+                                selected = selectedCategory == ServiceCategory.CARS,
+                                onClick = {
+                                    onCategorySelected(
+                                        if (selectedCategory == ServiceCategory.CARS) ServiceCategory.ALL else ServiceCategory.CARS
+                                    )
+                                },
+                                label = { Text("Travel", fontSize = 11.sp, fontWeight = FontWeight.Bold) },
+                                leadingIcon = {
+                                    Icon(Icons.Default.DirectionsCar, contentDescription = null, modifier = Modifier.size(13.dp))
+                                },
+                                colors = FilterChipDefaults.filterChipColors(
+                                    selectedContainerColor = MaterialTheme.colorScheme.primaryContainer,
+                                    selectedLabelColor = MaterialTheme.colorScheme.onPrimaryContainer
+                                ),
+                                modifier = Modifier.testTag("category_filter_travel")
+                            )
+                        }
 
-                        // Quick Flights Travel Filter
-                        FilterChip(
-                            selected = selectedCategory == ServiceCategory.FLIGHTS,
-                            onClick = {
-                                if (selectedCategory == ServiceCategory.FLIGHTS) {
-                                    onCategorySelected(ServiceCategory.ALL)
-                                } else {
-                                    onCategorySelected(ServiceCategory.FLIGHTS)
-                                }
-                            },
-                            label = { Text("Flights", fontSize = 11.sp, fontWeight = FontWeight.Bold) },
-                            leadingIcon = {
-                                Icon(Icons.Default.Flight, contentDescription = null, modifier = Modifier.size(13.dp))
-                            },
-                            colors = FilterChipDefaults.filterChipColors(
-                                selectedContainerColor = MaterialTheme.colorScheme.primaryContainer,
-                                selectedLabelColor = MaterialTheme.colorScheme.onPrimaryContainer
-                            ),
-                            modifier = Modifier.testTag("quick_filter_flights")
-                        )
+                        // Delivery & Mart
+                        item {
+                            FilterChip(
+                                selected = selectedCategory == ServiceCategory.GROCERY,
+                                onClick = {
+                                    onCategorySelected(
+                                        if (selectedCategory == ServiceCategory.GROCERY) ServiceCategory.ALL else ServiceCategory.GROCERY
+                                    )
+                                },
+                                label = { Text("Delivery", fontSize = 11.sp, fontWeight = FontWeight.Bold) },
+                                leadingIcon = {
+                                    Icon(Icons.Default.ShoppingCart, contentDescription = null, modifier = Modifier.size(13.dp))
+                                },
+                                colors = FilterChipDefaults.filterChipColors(
+                                    selectedContainerColor = MaterialTheme.colorScheme.primaryContainer,
+                                    selectedLabelColor = MaterialTheme.colorScheme.onPrimaryContainer
+                                ),
+                                modifier = Modifier.testTag("category_filter_delivery")
+                            )
+                        }
 
-                        // Quick Hotels Travel Filter
-                        FilterChip(
-                            selected = selectedCategory == ServiceCategory.HOTELS,
-                            onClick = {
-                                if (selectedCategory == ServiceCategory.HOTELS) {
-                                    onCategorySelected(ServiceCategory.ALL)
-                                } else {
-                                    onCategorySelected(ServiceCategory.HOTELS)
-                                }
-                            },
-                            label = { Text("Hotels", fontSize = 11.sp, fontWeight = FontWeight.Bold) },
-                            leadingIcon = {
-                                Icon(Icons.Default.Hotel, contentDescription = null, modifier = Modifier.size(13.dp))
-                            },
-                            colors = FilterChipDefaults.filterChipColors(
-                                selectedContainerColor = MaterialTheme.colorScheme.primaryContainer,
-                                selectedLabelColor = MaterialTheme.colorScheme.onPrimaryContainer
-                            ),
-                            modifier = Modifier.testTag("quick_filter_hotels")
-                        )
+                        // Flights & Aviation
+                        item {
+                            FilterChip(
+                                selected = selectedCategory == ServiceCategory.FLIGHTS,
+                                onClick = {
+                                    onCategorySelected(
+                                        if (selectedCategory == ServiceCategory.FLIGHTS) ServiceCategory.ALL else ServiceCategory.FLIGHTS
+                                    )
+                                },
+                                label = { Text("Flights", fontSize = 11.sp, fontWeight = FontWeight.Bold) },
+                                leadingIcon = {
+                                    Icon(Icons.Default.Flight, contentDescription = null, modifier = Modifier.size(13.dp))
+                                },
+                                colors = FilterChipDefaults.filterChipColors(
+                                    selectedContainerColor = MaterialTheme.colorScheme.primaryContainer,
+                                    selectedLabelColor = MaterialTheme.colorScheme.onPrimaryContainer
+                                ),
+                                modifier = Modifier.testTag("category_filter_flights")
+                            )
+                        }
+
+                        // Hotels & Stays
+                        item {
+                            FilterChip(
+                                selected = selectedCategory == ServiceCategory.HOTELS,
+                                onClick = {
+                                    onCategorySelected(
+                                        if (selectedCategory == ServiceCategory.HOTELS) ServiceCategory.ALL else ServiceCategory.HOTELS
+                                    )
+                                },
+                                label = { Text("Hotels", fontSize = 11.sp, fontWeight = FontWeight.Bold) },
+                                leadingIcon = {
+                                    Icon(Icons.Default.Hotel, contentDescription = null, modifier = Modifier.size(13.dp))
+                                },
+                                colors = FilterChipDefaults.filterChipColors(
+                                    selectedContainerColor = MaterialTheme.colorScheme.primaryContainer,
+                                    selectedLabelColor = MaterialTheme.colorScheme.onPrimaryContainer
+                                ),
+                                modifier = Modifier.testTag("category_filter_hotels")
+                            )
+                        }
                     }
 
-                    Spacer(modifier = Modifier.height(8.dp))
+                    Spacer(modifier = Modifier.height(10.dp))
 
                     // Result summary and Verified switch
                     Row(

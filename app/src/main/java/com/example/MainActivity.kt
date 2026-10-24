@@ -144,6 +144,7 @@ fun JubaGoApp(
     val recentFcmNotifications by viewModel.recentFcmNotifications.collectAsStateWithLifecycle()
     val deliveryAddresses by viewModel.deliveryAddresses.collectAsStateWithLifecycle()
     val savedPaymentMethods by viewModel.savedPaymentMethods.collectAsStateWithLifecycle()
+    val searchHistory by viewModel.searchHistory.collectAsStateWithLifecycle()
 
     val context = androidx.compose.ui.platform.LocalContext.current
     val notificationPermissionLauncher = androidx.activity.compose.rememberLauncherForActivityResult(
@@ -441,10 +442,14 @@ fun JubaGoApp(
                         onlyVerified = onlyVerified,
                         isOffline = isOffline,
                         unreadNotificationCount = notifications.size,
+                        searchHistory = searchHistory,
                         onCategorySelected = { viewModel.setCategory(it) },
                         onScopeSelected = { viewModel.setCoverageScope(it) },
                         onOpenBusinessRegistration = { viewModel.openBusinessRegistration() },
                         onSearchQueryChanged = { viewModel.setSearchQuery(it) },
+                        onSearchQuerySubmitted = { viewModel.submitSearchQuery(it) },
+                        onRemoveSearchHistoryQuery = { viewModel.removeSearchHistoryQuery(it) },
+                        onClearSearchHistory = { viewModel.clearSearchHistory() },
                         onToggleVerified = { viewModel.toggleOnlyVerified() },
                         onToggleOffline = { viewModel.toggleOfflineMode() },
                         onOpenNotifications = { viewModel.toggleNotifications(true) },

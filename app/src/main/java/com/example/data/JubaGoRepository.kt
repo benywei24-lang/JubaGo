@@ -31,11 +31,14 @@ import java.util.UUID
 class JubaGoRepository(
     private val context: Context? = null,
     private val customOrderDao: OrderDao? = null,
-    private val syncHelperOverride: RoomFirestoreSyncHelper? = null
+    private val syncHelperOverride: RoomFirestoreSyncHelper? = null,
+    private val customSearchHistoryDao: com.example.data.local.SearchHistoryDao? = null
 ) {
     private val repoScope = CoroutineScope(Dispatchers.IO)
     private val orderDao: OrderDao? = customOrderDao ?: context?.let { JubaGoDatabase.getDatabase(it).orderDao() }
     private val favoriteDao: com.example.data.local.FavoriteDao? = context?.let { JubaGoDatabase.getDatabase(it).favoriteDao() }
+    private val searchHistoryDao: com.example.data.local.SearchHistoryDao? = customSearchHistoryDao ?: context?.let { JubaGoDatabase.getDatabase(it).searchHistoryDao() }
+
     val syncHelper: RoomFirestoreSyncHelper? = syncHelperOverride ?: if (orderDao != null && context != null) {
         RoomFirestoreSyncHelper(orderDao, context).apply {
             startObservingAndSync()
@@ -45,11 +48,34 @@ class JubaGoRepository(
     private val _favoriteIds = MutableStateFlow<Set<String>>(emptySet())
     val favoriteIds: StateFlow<Set<String>> = _favoriteIds.asStateFlow()
 
+    private val _searchHistory = MutableStateFlow<List<com.example.data.local.SearchQueryEntity>>(emptyList())
+    val searchHistory: StateFlow<List<com.example.data.local.SearchQueryEntity>> = _searchHistory.asStateFlow()
+
     init {
         favoriteDao?.let { dao ->
             repoScope.launch {
                 dao.getFavoriteServiceIds().collect { list ->
                     _favoriteIds.value = list.toSet()
+                }
+            }
+        }
+
+        searchHistoryDao?.let { dao ->
+            repoScope.launch {
+                val existing = dao.getRecentSearches()
+                if (existing.isEmpty()) {
+                    val initialQueries = listOf(
+                        com.example.data.local.SearchQueryEntity(query = "Grilled Nile Tilapia", categoryContext = "FOOD", timestamp = System.currentTimeMillis() - 600000),
+                        com.example.data.local.SearchQueryEntity(query = "Boda-Boda Express", categoryContext = "CARS", timestamp = System.currentTimeMillis() - 1200000),
+                        com.example.data.local.SearchQueryEntity(query = "Toyota Land Cruiser", categoryContext = "CARS", timestamp = System.currentTimeMillis() - 1800000),
+                        com.example.data.local.SearchQueryEntity(query = "Konyo Konyo Market", categoryContext = "GROCERY", timestamp = System.currentTimeMillis() - 2400000),
+                        com.example.data.local.SearchQueryEntity(query = "Shawarma Combo", categoryContext = "FOOD", timestamp = System.currentTimeMillis() - 3000000)
+                    )
+                    initialQueries.forEach { dao.insertSearch(it) }
+                }
+
+                dao.getRecentSearchesFlow().collect { list ->
+                    _searchHistory.value = list
                 }
             }
         }
@@ -604,6 +630,65 @@ class JubaGoRepository(
 
     fun clearNotifications() {
         _notifications.value = emptyList()
+    }
+
+    fun recordSearchQuery(query: String, categoryContext: String? = null) {
+        val trimmed = query.trim()
+        if (trimmed.length < 2) return
+
+        searchHistoryDao?.let { dao ->
+            repoScope.launch {
+                val existing = dao.findSearchByQuery(trimmed)
+                if (existing != null) {
+                    dao.insertSearch(
+                        existing.copy(
+                            timestamp = System.currentTimeMillis(),
+                            searchCount = existing.searchCount + 1,
+                            categoryContext = categoryContext ?: existing.categoryContext
+                        )
+                    )
+                } else {
+                    dao.insertSearch(
+                        com.example.data.local.SearchQueryEntity(
+                            query = trimmed,
+                            categoryContext = categoryContext,
+                            timestamp = System.currentTimeMillis(),
+                            searchCount = 1
+                        )
+                    )
+                }
+            }
+        } ?: run {
+            val current = _searchHistory.value.filter { !it.query.equals(trimmed, ignoreCase = true) }
+            val updated = listOf(
+                com.example.data.local.SearchQueryEntity(
+                    query = trimmed,
+                    categoryContext = categoryContext,
+                    timestamp = System.currentTimeMillis()
+                )
+            ) + current
+            _searchHistory.value = updated.take(15)
+        }
+    }
+
+    fun removeSearchQuery(query: String) {
+        searchHistoryDao?.let { dao ->
+            repoScope.launch {
+                dao.deleteSearchByQuery(query)
+            }
+        } ?: run {
+            _searchHistory.value = _searchHistory.value.filter { !it.query.equals(query, ignoreCase = true) }
+        }
+    }
+
+    fun clearSearchHistory() {
+        searchHistoryDao?.let { dao ->
+            repoScope.launch {
+                dao.clearAll()
+            }
+        } ?: run {
+            _searchHistory.value = emptyList()
+        }
     }
 
     fun selectOrderForTracking(order: OrderBooking) {
